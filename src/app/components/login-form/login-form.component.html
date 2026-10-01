@@ -1,0 +1,4 @@
+<form class="panel" (ngSubmit)="login()"><p class="step">01 · Identity Service</p><h2>Sign in</h2>
+  <div class="login-grid"><div><label>Username <input name="username" [(ngModel)]="username" /></label><label>Password <input name="password" [(ngModel)]="password" type="password" /></label></div><fieldset><legend>JWT permissions</legend>@for (permission of permissionOptions; track permission) { <label class="permission"><input type="checkbox" [name]="permission" [(ngModel)]="selected[permission]" /> {{ permission }}</label> }</fieldset></div>
+  <button type="submit">Get JWT</button><p [class.error]="failed()">{{ message() }}</p>
+</form>

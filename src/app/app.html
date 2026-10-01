@@ -1,0 +1,65 @@
+<section class="security-lab">
+  <p class="eyebrow">Angular remote · Security Lab</p>
+  <h1>JWT-backed items.</h1>
+  <p class="intro">
+    Identity signs your token with RS256. Protected Service validates it against Identity's JWKS
+    before allowing item changes.
+  </p>
+  @if (auth.token()) {
+    <div class="authenticated-workspace">
+      <app-item-manager />
+      <app-jwt-inspector />
+    </div>
+  } @else {
+    <app-login-form />
+  }
+
+  <section class="lab-stack" aria-labelledby="lab-stack-title">
+    <div class="lab-stack__heading">
+      <p class="eyebrow">Inside this MFE</p>
+      <h2 id="lab-stack-title">Security Lab stack.</h2>
+      <p>Everything used to issue, validate, and authorize a signed JWT in this remote.</p>
+    </div>
+
+    <div class="lab-stack__categories">
+      <section class="stack-category">
+        <h3>Tools</h3>
+        <ul>
+          <li>Angular 20</li>
+          <li>Angular Native Federation</li>
+          <li>.NET Minimal APIs</li>
+        </ul>
+      </section>
+
+      <section class="stack-category">
+        <h3>Infrastructure</h3>
+        <ul>
+          <li>Portfolio Host — localhost:4200</li>
+          <li>Security Remote — localhost:4201</li>
+          <li>Identity Service — localhost:5101</li>
+          <li>Protected Service — localhost:5102</li>
+        </ul>
+      </section>
+
+      <section class="stack-category">
+        <h3>Skills demonstrated</h3>
+        <ul>
+          <li>JWT authentication</li>
+          <li>RS256 asymmetric signing</li>
+          <li>JWKS-based public-key discovery</li>
+          <li>Dynamic policy authorization</li>
+        </ul>
+      </section>
+
+      <section class="stack-category">
+        <h3>Technology</h3>
+        <ul>
+          <li>OAuth / OpenID Connect discovery</li>
+          <li>JSON Web Key Set (JWKS)</li>
+          <li>ASP.NET Core JwtBearer</li>
+          <li>In-memory item storage</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+app-root .authenticated-workspace {
+  align-items: start;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  margin-top: 3rem;
+}
+
+app-root .authenticated-workspace app-item-manager .panel {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  app-root .authenticated-workspace {
+    grid-template-columns: 1fr;
+  }
+}

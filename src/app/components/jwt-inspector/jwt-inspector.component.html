@@ -1,0 +1,28 @@
+<aside class="jwt-inspector" aria-labelledby="jwt-inspector-title">
+  <p class="step">03 · Token inspector</p>
+  <h2 id="jwt-inspector-title">Decoded JWT</h2>
+  <p class="description">This is the token currently sent to the Protected Service.</p>
+
+  @if (tampered()) {
+    <div class="tamper-summary">
+      <strong>Signature verification will fail.</strong>
+      <span>The payload was changed locally; Identity Service did not sign this version.</span>
+    </div>
+  }
+
+  @if (changes().length) {
+    <section class="changes" aria-label="Token changes">
+      <h3>Changed claims</h3>
+      @for (change of changes(); track change.claim) {
+        <div class="claim-change">
+          <code>{{ change.claim }}</code>
+          <del>{{ change.before }}</del>
+          <ins>{{ change.after }}</ins>
+        </div>
+      }
+    </section>
+  }
+
+  <section class="jwt-part"><h3>Header</h3><pre>{{ format(header()) }}</pre></section>
+  <section class="jwt-part" [class.jwt-part--changed]="tampered()"><h3>Payload</h3><pre>{{ format(payload()) }}</pre></section>
+</aside>

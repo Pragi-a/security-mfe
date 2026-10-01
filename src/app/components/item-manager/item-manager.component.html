@@ -1,0 +1,8 @@
+<section class="panel"><p class="step">02 · Protected Service</p><h2>Manage items <span>{{ items().length }}/5</span></h2>
+  <label>Item name <input name="itemName" [(ngModel)]="itemName" placeholder="For example: Security review" /></label>
+  <div class="actions"><button type="button" (click)="add()" [disabled]="!can('add')">Add</button><button type="button" (click)="update()" [disabled]="!can('update')">Update</button><button type="button" (click)="remove()" [disabled]="!can('delete')">Remove</button><button class="tamper" type="button" (click)="tamperToken()" [disabled]="tokenTampered()">Tamper JWT</button><button class="logout" type="button" (click)="logout()">Logout</button></div>
+  @if (tokenTampered()) { <p class="tamper-notice">Token signature modified locally. Log in again to restore a valid token.</p> }
+  <p>The protected API stores a maximum of five items in memory.</p>
+  <ul>@for (item of items(); track item.id) { <li [class.selected]="selectedId() === item.id" (click)="select(item)"><span>{{ item.name }}</span><small>#{{ item.id }}</small></li> } @empty { <li class="empty">No items yet. Add your first one.</li> }</ul>
+  @if (message()) { <p class="message" [class.error]="failed()">{{ message() }}</p> }
+</section>
